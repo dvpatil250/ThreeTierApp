@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: todo
+  labels:
+    app: todo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata: 
+     namespace: todo
+     labels: 
+       app: todo
+    spec: 
+      containers:
+        - name: front-end
+          image: dvpatil250/front-todo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
